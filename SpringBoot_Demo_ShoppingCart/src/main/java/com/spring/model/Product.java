@@ -1,5 +1,7 @@
 package com.spring.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,14 +9,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "product")
-public class Product implements java.io.Serializable {
+public class Product implements Serializable {
 
-	private static final long serialVersionUID = -4077994574835694625L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3454378828119653751L;
 
 	@Id
 	@Column(name = "id")
@@ -24,10 +29,8 @@ public class Product implements java.io.Serializable {
 	private String productName;
 	@Column(name = "description")
 	private String description;
-	@Column(name = "category_id")
-	private int categoryId;
 
-	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
 	@JoinColumn(name = "category_id")
 	private Category category;
 
@@ -76,7 +79,8 @@ public class Product implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", productName=" + productName + ", description=" + description + "]";
+		return "Product [id=" + id + ", productName=" + productName + ", description=" + description + ", category="
+				+ category + "]";
 	}
 
 }

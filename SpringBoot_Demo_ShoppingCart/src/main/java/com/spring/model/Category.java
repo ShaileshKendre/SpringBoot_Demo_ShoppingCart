@@ -1,22 +1,22 @@
 package com.spring.model;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "category")
 public class Category implements Serializable {
 
-	private static final long serialVersionUID = -8912269071701158188L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6935129535749020126L;
 
 	@Id
 	@Column(name = "id")
@@ -24,9 +24,6 @@ public class Category implements Serializable {
 	private int id;
 	@Column(name = "category")
 	private String category;
-
-	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-	private List<Product> products;
 
 	public Category() {
 		super();
@@ -51,14 +48,6 @@ public class Category implements Serializable {
 
 	public void setCategory(String category) {
 		this.category = category;
-	}
-
-	public List<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(List<Product> products) {
-		this.products = products;
 	}
 
 	@Override
