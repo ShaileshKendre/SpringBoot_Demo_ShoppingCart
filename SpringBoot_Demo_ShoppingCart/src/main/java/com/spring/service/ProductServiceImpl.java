@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.dao.ProductDao;
 import com.spring.model.Category;
+import com.spring.model.Image;
 import com.spring.model.Product;
 
 @Service
@@ -33,6 +34,12 @@ public class ProductServiceImpl implements ProductService {
 	public List<Category> categories() {
 		List<Category> list = productDao.categories();
 		return list;
+	}
+
+	@Override
+	public List<Image> allImages() {
+		return productDao.allImages();
+
 	}
 
 }

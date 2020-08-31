@@ -9,6 +9,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.spring.model.Category;
+import com.spring.model.Image;
 import com.spring.model.Product;
 
 @Configuration
@@ -23,8 +24,11 @@ public class ApplicationConfiguration {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 
 		sessionFactory.setDataSource(dataSource);
-		sessionFactory.setAnnotatedClasses(Product.class);
-		sessionFactory.setAnnotatedClasses(Category.class);
+		sessionFactory.setAnnotatedClasses(Product.class, Category.class, Image.class);
+		/*
+		 * sessionFactory.setAnnotatedClasses(Category.class);
+		 * sessionFactory.setAnnotatedClasses(Product.class);
+		 */
 
 		return sessionFactory;
 

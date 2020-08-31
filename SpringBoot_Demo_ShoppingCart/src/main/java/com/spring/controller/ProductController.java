@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.model.Category;
+import com.spring.model.Image;
 import com.spring.model.Product;
 import com.spring.service.ProductService;
 
@@ -35,5 +36,11 @@ public class ProductController {
 	public ResponseEntity<List<Category>> getCategories() {
 		List<Category> list = productService.categories();
 		return new ResponseEntity<List<Category>>(list, HttpStatus.OK);
+	}
+
+	@GetMapping(value = "/images")
+	public ResponseEntity<List<Image>> getImages() {
+		List<Image> list = productService.allImages();
+		return new ResponseEntity<List<Image>>(list, HttpStatus.OK);
 	}
 }
